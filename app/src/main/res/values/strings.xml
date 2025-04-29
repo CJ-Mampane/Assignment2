@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ScholarShelf</string>
+    <string name="title_label">Title: %1$s</string>
+    <string name="seller_label">Seller: %1$s</string>
+    <string name="price_label">Price: $%1$.2f</string>
+</resources>
