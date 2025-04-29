@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
         adapter = new TextbookAdapter(textbookList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        TextView noResultsText = findViewById(R.id.noResultsText);
+
+        adapter.setOnEmptySearchListener(new TextbookAdapter.OnEmptySearchListener() {
+            @Override
+            public void onEmptyResult(boolean isEmpty) {
+                noResultsText.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+            }
+        });
+
 
         addBookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
