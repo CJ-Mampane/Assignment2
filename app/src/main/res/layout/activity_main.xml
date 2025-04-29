@@ -36,6 +36,18 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginBottom="10dp" />
+    
+    <TextView
+    android:id="@+id/noResultsText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="No books found."
+    android:gravity="center"
+    android:textSize="18sp"
+    android:textColor="#FF0000"
+    android:visibility="gone"
+    android:paddingTop="12dp"/>
+
 
     <!-- Add Book Button -->
     <Button
