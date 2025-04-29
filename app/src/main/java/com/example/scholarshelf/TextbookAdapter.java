@@ -16,6 +16,11 @@ public class TextbookAdapter extends RecyclerView.Adapter<TextbookAdapter.Textbo
     private final List<Textbook> textbookList;
     private List<Textbook> fullList;
 
+    private OnEmptySearchListener emptySearchListener;
+
+    public void setOnEmptySearchListener(OnEmptySearchListener listener) {
+        this.emptySearchListener = listener;
+    }
     public TextbookAdapter(List<Textbook> textbookList) {
         this.textbookList = textbookList;
         this.fullList = new ArrayList<>(textbookList);
@@ -41,7 +46,16 @@ public class TextbookAdapter extends RecyclerView.Adapter<TextbookAdapter.Textbo
         textbookList.clear();
         textbookList.addAll(filteredList);
         notifyDataSetChanged();
+
+        if (emptySearchListener != null) {
+            emptySearchListener.onEmptyResult(filteredList.isEmpty());
+        }
     }
+
+    public interface OnEmptySearchListener {
+        void onEmptyResult(boolean isEmpty);
+    }
+
 
     @NonNull
     @Override
